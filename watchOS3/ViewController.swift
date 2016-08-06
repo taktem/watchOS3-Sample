@@ -24,21 +24,16 @@ class ViewController: UIViewController {
 
 
     @IBAction private func notificationButtonTapped() {
-        // UNMutableNotificationContent 作成
         let content = UNMutableNotificationContent()
         content.title = "Hello!"
         content.body = "World!"
         content.sound = UNNotificationSound.default()
         
-        // 5秒後に発火する UNTimeIntervalNotificationTrigger 作成、
-        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
-        // identifier, content, trigger から UNNotificationRequest 作成
-        let request = UNNotificationRequest.init(identifier: "FiveSecondNotification", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "FiveSecondNotification", content: content, trigger: trigger)
         
-        // UNUserNotificationCenter に request を追加
-        let center = UNUserNotificationCenter.current()
-        center.add(request)
+        UNUserNotificationCenter.current().add(request)
     }
 }
 
